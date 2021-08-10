@@ -16,13 +16,10 @@ package commontest
 
 import (
 	"fmt"
-	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
-	"time"
 )
 
 // WriteTempFiles is a helper function to dynamically write files such as go.mod or version.go used for testing.
