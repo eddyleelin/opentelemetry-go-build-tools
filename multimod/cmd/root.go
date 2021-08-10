@@ -24,8 +24,12 @@ import (
 )
 
 var (
-	moduleSetName  string
 	versioningFile string
+)
+
+const (
+	defaultVersionsConfigName = "versions"
+	defaultVersionsConfigType = "yaml"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -49,10 +53,11 @@ func init() {
 	if err != nil {
 		log.Fatalf("could not find repo root: %v", err)
 	}
-	versioningFile = filepath.Join(repoRoot,
+
+	versioningFileDefault := filepath.Join(repoRoot,
 		fmt.Sprintf("%v.%v", defaultVersionsConfigName, defaultVersionsConfigType))
 
-	rootCmd.PersistentFlags().StringVarP(&versioningFile, "versioning-file", "v", versioningFile,
+	rootCmd.PersistentFlags().StringVarP(&versioningFile, "versioning-file", "v", versioningFileDefault,
 		"Path to versioning file that contains definitions of all module sets. "+
 			"If unspecified, defaults to versions.yaml in the Git repo root.")
 
